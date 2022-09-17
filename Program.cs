@@ -1,35 +1,26 @@
-﻿//Задача 44: Не используя рекурсию,выведете первые N чисел Фибоначчи .Первые два числа Фибоначчи : 0 , 1.
+﻿// Задача 45: Напишите программу, которая будет создавать копию заданного массива с помощью поэлементного копирования.
 Console.Clear();
-Console.WriteLine("Введите число: ");
-int N = int.Parse(Console.ReadLine());
-ulong[] Fibonachi(int number)
-{
-    int temp = 2;
-    ulong[] result = new ulong[number];
-    result[0] = 0;
-    result[1] = 1;
-    Console.Write($"Если N = {number}  - > {result[0]}  {result[1]} ");
-    while (temp < number)
+int[] GetArray(int size, int minValue, int maxValue){
+    int[] res = new int[size];
+    Console.Write("[");
+    for (int i = 0; i < size; i++)
     {
-        result[temp] = result[temp - 1] + result[temp - 2];
-        Console.Write($" {result[temp]} ");
-        temp++;
+        res[i] = new Random().Next(minValue, maxValue + 1);
+        if (i == size - 1) Console.Write($"{res[i]}");
+        else Console.Write($"{res[i]} , ");
     }
-    return result;
+    Console.Write("]");
+    return res;
 }
-
-ulong MaxInFibonachi(ulong[] arra)
-{
-    ulong max = 0;
-    ulong min = arra[0];
-    for (int g = 0; g < arra.Length; g++)
-    {
-        if (min > arra[g]) min = arra[g];
-        else max = arra[g];
+void ReplaceArray(int[] arra){
+     Console.Write("  -> [");
+    int[] new_my_array = new int[arra.Length];
+    for (int i = 0; i < new_my_array.Length; i++){
+        new_my_array[i] = arra[i];
+        if (new_my_array[i] == new_my_array[new_my_array.Length-1]) Console.Write($"{new_my_array[i]}");
+        else Console.Write($" {new_my_array[i]} , ");
     }
-    Console.WriteLine($"  Максимальное число-> {max}");
-    return max;
+    Console.Write("]");
 }
-ulong[] a = Fibonachi(N);
-Console.WriteLine("      ");
-MaxInFibonachi(a);
+int[] array = GetArray(10, -9, 10);
+ReplaceArray(array);
