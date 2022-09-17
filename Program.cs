@@ -1,26 +1,20 @@
-﻿// Задача 45: Напишите программу, которая будет создавать копию заданного массива с помощью поэлементного копирования.
+﻿// Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+
+// 0, 7, 8, -2, -2 -> 2
+
+// 1, -7, 567, 89, 223-> 3
 Console.Clear();
-int[] GetArray(int size, int minValue, int maxValue){
-    int[] res = new int[size];
-    Console.Write("[");
-    for (int i = 0; i < size; i++)
+Console.Write("Введите числа: ");
+int[] array = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+void bigger_than_ziro(int[] arra)
+{
+    int count = 0;
+    foreach (int i in arra)
     {
-        res[i] = new Random().Next(minValue, maxValue + 1);
-        if (i == size - 1) Console.Write($"{res[i]}");
-        else Console.Write($"{res[i]} , ");
+        if (i > 0) count++;
+        else{}
     }
-    Console.Write("]");
-    return res;
+    Console.Write($"-> {count}");
 }
-void ReplaceArray(int[] arra){
-     Console.Write("  -> [");
-    int[] new_my_array = new int[arra.Length];
-    for (int i = 0; i < new_my_array.Length; i++){
-        new_my_array[i] = arra[i];
-        if (new_my_array[i] == new_my_array[new_my_array.Length-1]) Console.Write($"{new_my_array[i]}");
-        else Console.Write($" {new_my_array[i]} , ");
-    }
-    Console.Write("]");
-}
-int[] array = GetArray(10, -9, 10);
-ReplaceArray(array);
+
+bigger_than_ziro(array);
