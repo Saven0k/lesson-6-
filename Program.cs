@@ -1,17 +1,20 @@
-﻿// Задача   40: Напишите программу,которая принимает на вход три числа и проверяет,может ли существовать треугольник с такими сторонами.
+﻿// Задача 42: Напишите программу, которая будет преобразовывать десятичное число в двоичное.
 Console.Clear();
-Console.WriteLine("Введите длинны сторон: ");
-int[] array = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-void if_this_triangle(int[] arra)
+Console.Write("Введите число: ");
+long a = long.Parse(Console.ReadLine());
+Console.Clear();
+Console.Write($"{a} ->");
+long ten_in_two(long number)
 {
-    if (arra.Length > 3) Console.WriteLine("Вы ввели больше чем 3 числа");
-    else
+    long result = 0;
+    if (number > 0)
     {
-        if (arra[0] + arra[1] <= arra[2] || arra[0] + arra[2] <= arra[1] || arra[1] + arra[2] <= arra[0]) Console.WriteLine($"Треугольника со сторонами {arra[0]}, {arra[1]}, {arra[2]} - не существует");
-        else Console.WriteLine($"Треугольника со сторонами {arra[0]}, {arra[1]}, {arra[2]} - существует");
+        result = number % 2;
+        number = number /2 ;
+        Console.Write($" {result} ");
+        number = ten_in_two(number);
     }
-
+    else{}
+    return result;
 }
-if_this_triangle(array);
-
-// int[] vosko = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+ten_in_two(a);
